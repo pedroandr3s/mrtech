@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Propuesta1 from './components/Propuesta1';
+import Propuesta2 from './components/Propuesta2';
+import Propuesta3 from './components/Propuesta3';
 import './App.css';
 
 function App() {
+  const [propuestaActiva, setPropuestaActiva] = useState(1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header 
+        propuestaActiva={propuestaActiva} 
+        setPropuestaActiva={setPropuestaActiva} 
+      />
+      {propuestaActiva === 1 && <Propuesta1 />}
+      {propuestaActiva === 2 && <Propuesta2 />}
+      {propuestaActiva === 3 && <Propuesta3 />}
     </div>
   );
 }

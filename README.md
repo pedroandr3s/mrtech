@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# MrTech - Página de Productos Robóticos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una página web moderna en React que muestra 6 productos robóticos con 3 propuestas de diseño diferentes.
 
-## Available Scripts
+## 🎨 Propuestas de Diseño
 
-In the project directory, you can run:
+### Propuesta 1: Tech Moderno
+- **Colores**: Cyan (#00d4ff) y Púrpura (#7b2ff7)
+- **Estilo**: Moderno y minimalista con gradientes tech
+- **Ambiente**: Oscuro con efectos de neón suaves
 
-### `npm start`
+### Propuesta 2: Cyberpunk Neón
+- **Colores**: Magenta (#ff00ff) y Cyan (#00ffff)
+- **Estilo**: Futurista con efectos glitch y neón intenso
+- **Ambiente**: Dark theme con grid cyberpunk
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Propuesta 3: Premium Minimalista
+- **Colores**: Naranja (#ff6b35) y Blanco
+- **Estilo**: Limpio, elegante y profesional
+- **Ambiente**: Claro con acentos de color vibrantes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Características
 
-### `npm test`
+- ✅ Header con logo y navegación entre propuestas
+- ✅ 6 productos con imágenes de robots
+- ✅ Videos que se reproducen al pasar el cursor sobre las imágenes
+- ✅ Animaciones fluidas con Framer Motion
+- ✅ Diseño responsivo
+- ✅ 3 temas visuales completamente diferentes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Instalación
 
-### `npm run build`
+```bash
+# Instalar dependencias
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Iniciar servidor de desarrollo
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# La aplicación se abrirá en http://localhost:3000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Tecnologías Utilizadas
 
-### `npm run eject`
+- React 18
+- Framer Motion (animaciones)
+- CSS3 con gradientes y efectos avanzados
+- Componentes modulares y reutilizables
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📁 Estructura del Proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+mrtech/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── Header.css
+│   │   ├── ProductCard.js
+│   │   ├── ProductCard.css
+│   │   ├── Propuesta1.js
+│   │   ├── Propuesta1.css
+│   │   ├── Propuesta2.js
+│   │   ├── Propuesta2.css
+│   │   ├── Propuesta3.js
+│   │   └── Propuesta3.css
+│   ├── data/
+│   │   └── productos.js
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   └── index.css
+└── package.json
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🎯 Funcionalidades
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Navegación**: Cambia entre las 3 propuestas desde el header
+- **Hover Effect**: Los videos se reproducen automáticamente al pasar el cursor
+- **Animaciones**: Transiciones suaves en la carga de productos
+- **Responsive**: Se adapta a diferentes tamaños de pantalla
 
-## Learn More
+## 📝 Notas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Las imágenes y videos son de ejemplo usando URLs de Unsplash y Google Storage
+- Puedes reemplazar las URLs en `src/data/productos.js` con tus propios recursos
+- Cada propuesta tiene su propio archivo CSS para facilitar la personalización
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎨 Personalización
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para cambiar los colores o estilos de cada propuesta, edita los archivos:
+- `Propuesta1.css` para el tema Tech Moderno
+- `Propuesta2.css` para el tema Cyberpunk
+- `Propuesta3.css` para el tema Premium Minimalista
