@@ -12,8 +12,8 @@ export const productos = [
     nombre: "Brazo Robótico Industrial",
     descripcion: "Precisión industrial con 6 ejes de movimiento y control inteligente para manufactura",
     precio: "4,999.99",
-    imagen: "https://images.unsplash.com/photo-1563207153-f403bf289096?w=600&h=450&fit=crop",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+    imagen: "/producto2.jpg",
+    video: "/producto2.mp4"
   },
   {
     id: 3,

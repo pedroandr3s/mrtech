@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 
 const Header = ({ propuestaActiva, setPropuestaActiva }) => {
+  const [seccionActiva, setSeccionActiva] = useState('nosotros'); // 'nosotros' o 'contacto'
+
+  const handleSeccionClick = (seccion) => {
+    setSeccionActiva(seccion);
+  };
+
   return (
     <header className="header">
       <div className="header-container">
         <div className="logo">
           <img 
-            src="https://via.placeholder.com/50/00ff00/000000?text=MR" 
+            src="https://via.placeholder.com/50/ffd700/000000?text=MR" 
             alt="MrTech Logo" 
           />
           <span className="logo-text">MrTech</span>
@@ -35,8 +41,23 @@ const Header = ({ propuestaActiva, setPropuestaActiva }) => {
         </nav>
 
         <div className="header-right">
-          <a href="#nosotros" className="header-link">Nosotros</a>
-          <a href="#contacto" className="header-link contact-btn">Contáctame</a>
+          <div className="switch-container">
+            <div 
+              className={`switch-slider ${seccionActiva === 'contacto' ? 'right' : 'left'}`}
+            ></div>
+            <button
+              className={`switch-btn ${seccionActiva === 'nosotros' ? 'active' : ''}`}
+              onClick={() => handleSeccionClick('nosotros')}
+            >
+              Nosotros
+            </button>
+            <button
+              className={`switch-btn ${seccionActiva === 'contacto' ? 'active' : ''}`}
+              onClick={() => handleSeccionClick('contacto')}
+            >
+              Contáctame
+            </button>
+          </div>
         </div>
       </div>
     </header>

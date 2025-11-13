@@ -1,16 +1,262 @@
 .propuesta3 {
-  background: linear-gradient(to bottom, #fafafa 0%, #ffffff 50%, #fafafa 100%);
-  padding: 3rem 2rem;
+  background: #2c2c2c;
+  padding: 2rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Animaciones de fondo tecnológicas */
+.tech-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Circuitos animados */
+.circuit-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+  height: 2px;
+  width: 100%;
+  opacity: 0.3;
+  animation: circuit-flow 8s linear infinite;
+}
+
+.circuit-line:nth-child(1) {
+  top: 10%;
+  animation-delay: 0s;
+}
+
+.circuit-line:nth-child(2) {
+  top: 30%;
+  animation-delay: 2s;
+  animation-duration: 10s;
+}
+
+.circuit-line:nth-child(3) {
+  top: 50%;
+  animation-delay: 4s;
+  animation-duration: 12s;
+}
+
+.circuit-line:nth-child(4) {
+  top: 70%;
+  animation-delay: 6s;
+  animation-duration: 9s;
+}
+
+.circuit-line:nth-child(5) {
+  top: 90%;
+  animation-delay: 1s;
+  animation-duration: 11s;
+}
+
+@keyframes circuit-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Puntos de conexión animados */
+.tech-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.tech-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ff6b35;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35;
+  animation: dot-pulse 4s ease-in-out infinite;
+}
+
+.tech-dot:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.tech-dot:nth-child(2) {
+  top: 25%;
+  left: 80%;
+  animation-delay: 1s;
+}
+
+.tech-dot:nth-child(3) {
+  top: 45%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+.tech-dot:nth-child(4) {
+  top: 65%;
+  left: 70%;
+  animation-delay: 3s;
+}
+
+.tech-dot:nth-child(5) {
+  top: 85%;
+  left: 40%;
+  animation-delay: 1.5s;
+}
+
+.tech-dot:nth-child(6) {
+  top: 35%;
+  left: 50%;
+  animation-delay: 2.5s;
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
+/* Grid tecnológico */
+.tech-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(80px, 80px);
+  }
+}
+
+/* Hexágonos flotantes */
+.hexagon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.05;
+  animation: hexagon-float 15s ease-in-out infinite;
+}
+
+.hexagon:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.hexagon:nth-child(2) {
+  top: 30%;
+  left: 75%;
+  animation-delay: 3s;
+  animation-duration: 18s;
+}
+
+.hexagon:nth-child(3) {
+  top: 60%;
+  left: 25%;
+  animation-delay: 6s;
+  animation-duration: 20s;
+}
+
+.hexagon:nth-child(4) {
+  top: 80%;
+  left: 65%;
+  animation-delay: 9s;
+  animation-duration: 16s;
+}
+
+.hexagon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #ff6b35;
+  stroke-width: 2;
+}
+
+@keyframes hexagon-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.05;
+  }
+  50% {
+    transform: translateY(-50px) rotate(180deg);
+    opacity: 0.15;
+  }
+}
+
+/* Ondas de datos */
+.data-wave {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #ff6b35 25%, 
+    transparent 50%, 
+    #ff6b35 75%, 
+    transparent 100%);
+  opacity: 0.2;
+  animation: wave-move 6s linear infinite;
+}
+
+.data-wave:nth-child(1) {
+  bottom: 20%;
+  animation-delay: 0s;
+}
+
+.data-wave:nth-child(2) {
+  bottom: 40%;
+  animation-delay: 2s;
+}
+
+.data-wave:nth-child(3) {
+  bottom: 60%;
+  animation-delay: 4s;
+}
+
+@keyframes wave-move {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Contenido principal con z-index superior */
 .hero-section-p3 {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 4rem 0 6rem;
+  padding: 2rem 0 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content-p3 {
@@ -23,7 +269,7 @@
   display: inline-block;
   width: fit-content;
   padding: 0.5rem 1.2rem;
-  background: #fff;
+  background: #3a3a3a;
   border: 2px solid #ff6b35;
   color: #ff6b35;
   font-weight: 600;
@@ -34,9 +280,9 @@
 }
 
 .hero-title-p3 {
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: #2c2c2c;
+  color: #ffffff;
   line-height: 1.1;
   display: flex;
   flex-direction: column;
@@ -60,8 +306,8 @@
 }
 
 .hero-subtitle-p3 {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1.1rem;
+  color: #b0b0b0;
   line-height: 1.8;
   font-weight: 400;
   max-width: 500px;
@@ -125,40 +371,42 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: #fff;
+  background: #3a3a3a;
   box-shadow: 0 10px 40px rgba(255, 107, 53, 0.2);
 }
 
 .products-container-p3 {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  padding: 2rem 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Estilos específicos para las tarjetas en Propuesta 3 */
 .product-card.propuesta3 {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #3a3a3a;
+  border: 1px solid #4a4a4a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card.propuesta3:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(255, 107, 53, 0.15);
+  box-shadow: 0 12px 40px rgba(255, 107, 53, 0.3);
   border-color: #ff6b35;
 }
 
 .product-card.propuesta3 .product-name {
-  color: #2c2c2c;
+  color: #ffffff;
   font-weight: 700;
 }
 
 .product-card.propuesta3 .product-description {
-  color: #666;
+  color: #b0b0b0;
   font-weight: 400;
 }
 
@@ -168,7 +416,7 @@
 }
 
 .product-card.propuesta3 .product-btn {
-  background: #2c2c2c;
+  background: #ff6b35;
   color: #fff;
   border-radius: 50px;
   font-weight: 600;
@@ -176,7 +424,7 @@
 }
 
 .product-card.propuesta3 .product-btn:hover {
-  background: #ff6b35;
+  background: #e55a28;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
 }

@@ -29,6 +29,56 @@ const Propuesta3 = () => {
 
   return (
     <div className="propuesta3">
+      {/* Fondo tecnológico animado */}
+      <div className="tech-background">
+        {/* Grid de fondo */}
+        <div className="tech-grid"></div>
+        
+        {/* Líneas de circuito */}
+        <div className="circuit-line"></div>
+        <div className="circuit-line"></div>
+        <div className="circuit-line"></div>
+        <div className="circuit-line"></div>
+        <div className="circuit-line"></div>
+        
+        {/* Puntos tecnológicos */}
+        <div className="tech-dots">
+          <div className="tech-dot"></div>
+          <div className="tech-dot"></div>
+          <div className="tech-dot"></div>
+          <div className="tech-dot"></div>
+          <div className="tech-dot"></div>
+          <div className="tech-dot"></div>
+        </div>
+        
+        {/* Hexágonos flotantes */}
+        <div className="hexagon">
+          <svg viewBox="0 0 100 100">
+            <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" />
+          </svg>
+        </div>
+        <div className="hexagon">
+          <svg viewBox="0 0 100 100">
+            <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" />
+          </svg>
+        </div>
+        <div className="hexagon">
+          <svg viewBox="0 0 100 100">
+            <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" />
+          </svg>
+        </div>
+        <div className="hexagon">
+          <svg viewBox="0 0 100 100">
+            <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" />
+          </svg>
+        </div>
+        
+        {/* Ondas de datos */}
+        <div className="data-wave"></div>
+        <div className="data-wave"></div>
+        <div className="data-wave"></div>
+      </div>
+
       <div className="hero-section-p3">
         <motion.div 
           className="hero-content-p3"
