@@ -11,7 +11,7 @@
 .product-media {
   position: relative;
   width: 100%;
-  padding-top: 75%;
+  padding-top: 60%;
   overflow: hidden;
   background: #f0f0f0;
 }
@@ -40,44 +40,51 @@
 }
 
 .product-info {
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  flex: 1;
+  gap: 0.4rem;
+  /* REMOVIDO flex: 1 que causaba el espacio extra */
 }
 
 .product-name {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
+  line-height: 1.2;
 }
 
 .product-description {
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   opacity: 0.8;
-  flex: 1;
+  /* REMOVIDO flex: 1 que causaba el espacio extra */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.5rem; /* Espacio controlado antes del footer */
 }
 
 .product-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
+  margin-top: 0; /* Sin margen superior extra */
 }
 
 .product-price {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .product-btn {
-  padding: 0.7rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  font-size: .9rem;
   transition: all 0.3s ease;
 }
 

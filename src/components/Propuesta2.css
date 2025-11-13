@@ -1,5 +1,4 @@
 .propuesta2 {
-  min-height: 100vh;
   background: #0a0a0a;
   padding: 3rem 2rem;
   position: relative;
@@ -191,7 +190,7 @@
 @media (max-width: 768px) {
   .hero-title-p2 {
     font-size: 3rem;
-  }
+  } 
   
   .sub-text {
     font-size: 1.5rem;
