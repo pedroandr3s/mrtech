@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Propuesta1 from './components/Propuesta1';
-import Propuesta2 from './components/Propuesta2';
 import Propuesta3 from './components/Propuesta3';
+import ProductPage from './components/ProductPage';
 import './App.css';
 
 function App() {
-  const [propuestaActiva, setPropuestaActiva] = useState(1);
-
   return (
-    <div className="App">
-      <Header 
-        propuestaActiva={propuestaActiva} 
-        setPropuestaActiva={setPropuestaActiva} 
-      />
-      {propuestaActiva === 1 && <Propuesta1 />}
-      {propuestaActiva === 2 && <Propuesta2 />}
-      {propuestaActiva === 3 && <Propuesta3 />}
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Propuesta3 />} />
+          <Route path="/producto/:id" element={<ProductPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ProductCard from './ProductCard';
+import ProductDetail from './ProductDetail';
 import { productos } from '../data/productos';
 import './Propuesta3.css';
 
 const Propuesta3 = () => {
+  const navigate = useNavigate();
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,6 +30,20 @@ const Propuesta3 = () => {
         ease: "easeOut"
       }
     }
+  };
+
+  const handleProductClick = (producto) => {
+    // Si es el producto 3, ir a página completa
+    if (producto.id === 3) {
+      navigate(`/producto/${producto.id}`);
+    } else {
+      // Para otros productos, abrir modal
+      setProductoSeleccionado(producto);
+    }
+  };
+
+  const handleCloseDetail = () => {
+    setProductoSeleccionado(null);
   };
 
   return (
@@ -116,10 +135,22 @@ const Propuesta3 = () => {
       >
         {productos.map((producto) => (
           <motion.div key={producto.id} variants={itemVariants}>
-            <ProductCard producto={producto} theme="propuesta3" />
+            <ProductCard 
+              producto={producto} 
+              theme="propuesta3"
+              onClick={handleProductClick}
+            />
           </motion.div>
         ))}
       </motion.div>
+
+      {/* Modal de detalle del producto (solo para productos que no sean el 3) */}
+      {productoSeleccionado && (
+        <ProductDetail 
+          producto={productoSeleccionado} 
+          onClose={handleCloseDetail}
+        />
+      )}
     </div>
   );
 };
