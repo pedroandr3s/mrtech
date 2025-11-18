@@ -16,7 +16,10 @@ const Header = () => {
             src="https://via.placeholder.com/50/ffd700/000000?text=MR" 
             alt="MrTech Logo" 
           />
-          <span className="logo-text">MR Tech</span>
+          <div className="logo-text-container">
+            <span className="logo-text">MR Tech</span>
+            <span className="logo-subtitle">Machinery Robotic Technologies</span>
+          </div>
         </div>
 
         <div className="header-right">
