@@ -47,30 +47,85 @@ export const productos = [
       "Inspección de sensores y sistema de control mensual"
     ]
   },
-  {
-    id: 2,
-    nombre: "Brazo Robótico Industrial",
-    descripcion: "Precisión industrial con 6 ejes de movimiento y control inteligente para manufactura",
-    precio: "4,999.99",
-    imagen: "https://images.unsplash.com/photo-1563207153-f403bf289096?w=600&h=450&fit=crop",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    imagenes: [
-      "https://images.unsplash.com/photo-1563207153-f403bf289096?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=450&fit=crop"
-    ],
-    especificaciones: {
-      "Ejes": "6 ejes de movimiento",
-      "Alcance": "1200mm",
-      "Carga máxima": "10kg",
-      "Precisión": "±0.05mm",
-      "Velocidad": "180°/s",
-      "Control": "Sistema PLC integrado",
-      "Certificación": "ISO 9001, CE"
-    }
+ {
+  id: 2,
+  nombre: "Robot Extintor de Incendios con Orugas RX-40",
+  descripcion: "Robot de extinción de incendios todo terreno con sistema de orugas, monitor de agua/espuma de 40L/S, cámara PTZ 360° y control remoto hasta 500m",
+  precio: "45,999.99",
+  imagen: "/mrproductos/bomber1.jpg",
+  video: "/mrproductos/bomber.mp4",
+  imagenes: [
+    "/mrproductos/bomber1.jpg",
+    "/mrproductos/bomber1.jpg",
+    "/mrproductos/bomber1.jpg",
+    "/mrproductos/bomber1.jpg"
+  ],
+  especificaciones: {
+    "Motor": "CC 48V dual (880W x2)",
+    "Par nominal": "110 Nm",
+    "Batería": "48V 60AH",
+    "Velocidad": "0-1.2 m/s",
+    "Peso propio": "230 kg",
+    "Capacidad de carga": "100 kg",
+    "Monitor de incendio": "PSKD40 - 40L/S",
+    "Alcance de agua": "≥65m (agua) / ≥60m (espuma)",
+    "Control remoto": "500m de alcance",
+    "Autonomía": "3 horas",
+    "Certificación": "IP67 resistente al agua"
   },
+  caracteristicas: [
+    "Gran área de soporte y longitud de vía de puesta a tierra (725mm)",
+    "Apto para todos los terrenos - Sistema de orugas robusto",
+    "Radio de giro muy pequeño para espacios reducidos",
+    "Capacidad de cruzar obstáculos de hasta 125mm",
+    "Puede subir escaleras y pendientes de hasta 35°",
+    "MOC de acero inoxidable resistente y duradero",
+    "Diseño resistente al agua IP67",
+    "Control de operación inalámbrico hasta 500m",
+    "Suministro de mangueras dobles con gran caudal (40L/S)"
+  ],
+  funciones: [
+    "Chasis de robot con orugas de alta resistencia",
+    "Monitor de incendio de agua/espuma 40L/S",
+    "Cámara PTZ de 360° con rotación completa",
+    "Sistema antivuelco y anticolisión",
+    "Sistema de autoenfriamiento",
+    "Alarma de luz y sonido integrada",
+    "Detección de aire/calidad del aire",
+    "Caja de operación remota incluida"
+  ],
+  especificacionesTecnicas: {
+    "Dimensiones": {
+      "Tamaño contorno": "1200 x 900 x 900 mm",
+      "Altura sobre suelo": "135 mm",
+      "Ancho de vía": "150 mm",
+      "Longitud de oruga": "725 mm"
+    },
+    "Rendimiento": {
+      "Temperatura trabajo": "-20°C ~ 60°C",
+      "Superación obstáculos": "125 mm máximo",
+      "Subida pendiente": "35° máximo",
+      "Suspensión": "Cristiana",
+      "Tiempo trabajo": "3 horas continuas"
+    },
+    "Sistema extinción": {
+      "Modelo": "PSKD40",
+      "Presión trabajo": "0.8 MPa",
+      "Rango presión": "0.5 ~ 1.0 MPa",
+      "Alcance agua": "≥65m",
+      "Alcance espuma": "≥60m",
+      "Ángulo formación": "120° máximo",
+      "Ángulo paso": "+30° ~ +70°",
+      "Auto-rotación": "360° completa"
+    },
+    "Materiales": {
+      "Ruedas": "Aleaciones de aluminio",
+      "Cuerpo": "Acero carbono",
+      "Orugas": "Caucho con fibra de Kevlar",
+      "Acabado": "Recubierto plástico/pintura"
+    }
+  }
+},
   {
     id: 3,
     nombre: "Robot Cuadrúpedo Go2 Pro",
@@ -80,10 +135,9 @@ export const productos = [
     video: "/mrproductos/perro3.mp4",
     imagenes: [
       "/mrproductos/perro1.jpg",
-      "/mrproductos/perro2.jpg",
-      "/mrproductos/perro1.jpg",
-      "/mrproductos/perro2.jpg",
-      "/mrproductos/perro1.jpg"
+      "/mrproductos/perro2.jpg"
+    ],video: [
+      "/mrproductos/perro3.mp4",
     ],
     especificaciones: {
       "Tipo": "Cuadrúpedo biónico",
@@ -98,65 +152,116 @@ export const productos = [
   },
   {
     id: 4,
-    nombre: "Drone Autónomo Vigilancia",
-    descripcion: "Sistema de vigilancia aérea con reconocimiento facial y patrullaje automático",
-    precio: "1,499.99",
-    imagen: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=450&fit=crop",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    nombre: "Dron de Rescate Acuático JX-6A con Salvavidas",
+    descripcion: "Dron especializado para rescate marítimo con salvavidas integrado, flotabilidad de ≥16kg, cámara 1080p con gimbal y control remoto hasta 1000m",
+    precio: "12,999.99",
+    imagen: "/mrproductos/dron.png",
+    video: "/mrproductos/dron1.mp4",
     imagenes: [
-      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=600&h=450&fit=crop"
+      "/mrproductos/dron.png",
+      "/mrproductos/dron.png",
+      "/mrproductos/dron.png",
+      "/mrproductos/dron.png"
     ],
     especificaciones: {
-      "Autonomía": "45 minutos",
-      "Cámara": "4K 60fps",
-      "Alcance": "7km",
-      "Velocidad máx": "72 km/h",
-      "GPS": "Dual GPS/GLONASS"
+      "Modelo": "JX-6A",
+      "Tamaño": "98 x 98 x 13 cm",
+      "Peso bruto": "16 kg",
+      "Forma": "Circular",
+      "Flotabilidad": "≥16 kg",
+      "Tiempo de vuelo": "15 minutos",
+      "Velocidad máxima": "≥14 m/s",
+      "Control remoto": "1000m de alcance",
+      "Cámara": "1080p con gimbal",
+      "Rango gimbal": "+90° a -90°",
+      "Certificación": "CE / ISO 9000",
+      "Origen": "Shenzhen, China"
+    },
+    caracteristicas: [
+      "Diseño circular especializado para rescate acuático",
+      "Flotabilidad garantizada de ≥16kg en agua",
+      "Cámara Full HD 1080p con gimbal ajustable (+90° a -90°)",
+      "Velocidad de vuelo de hasta 14m/s para respuesta rápida",
+      "Control remoto de largo alcance hasta 1000m",
+      "Estructura de plástico resistente al agua",
+      "Ideal para rescate en superficie y buceo",
+      "Sistema de salvavidas integrado",
+      "Operación remota de gran tamaño para uso industrial"
+    ],
+    aplicaciones: [
+      "Rescate marítimo y costero",
+      "Operaciones de salvamento acuático",
+      "Asistencia en emergencias de buceo",
+      "Patrullaje de playas y zonas acuáticas",
+      "Búsqueda y rescate en aguas abiertas",
+      "Apoyo en deportes acuáticos extremos"
+    ],
+    especificacionesEmpaque: {
+      "Dimensiones paquete": "120 x 90 x 50 cm",
+      "Capacidad producción": "5000 unidades",
+      "Código HS": "8806211090",
+      "Marca": "Personalizable"
     }
   },
   {
-    id: 5,
-    nombre: "Robot Educativo STEM",
-    descripcion: "Plataforma programable perfecta para aprender robótica y programación",
-    precio: "199.99",
-    imagen: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=450&fit=crop",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-    imagenes: [
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=450&fit=crop"
-    ],
-    especificaciones: {
-      "Edad": "8+ años",
-      "Lenguajes": "Scratch, Python, C++",
-      "Sensores": "Ultrasónico, infrarrojo, táctil",
-      "Módulos": "30+ componentes incluidos",
-      "App": "iOS y Android"
-    }
+  id: 5,
+  nombre: "Robot Camilla de Rescate Acuático SY-YKDJ",
+  descripcion: "Camilla de rescate plegable con control remoto para superficie de agua, sistema de emergencia eléctrico con GPS/Beidou y capacidad de 130kg",
+  precio: "18,999.99",
+  imagen: "/mrproductos/salva1.avif",
+  video: "/mrproductos/salva1.mp4",
+  imagenes: [
+    "/mrproductos/salva1.avif",
+    "/mrproductos/salva1.avif",
+    "/mrproductos/salva1.avif",
+    "/mrproductos/salva1.avif"
+  ],
+  especificaciones: {
+    "Modelo": "SY-YKDJ",
+    "Marca": "YAS",
+    "Tamaño": "180 x 74 x 24 cm",
+    "Peso": "28 kg",
+    "Capacidad de carga": "≥130 kg",
+    "Fuerza de tracción": "400N máximo",
+    "Control remoto": "1500m de alcance",
+    "Batería": "40AH/12S",
+    "Posicionamiento": "GPS + Beidou",
+    "Grado impermeable": "IP68",
+    "Autonomía vacío": "≥1 hora",
+    "Autonomía con carga": "≥40 minutos",
+    "Origen": "Jiangsu, China"
   },
-  {
-    id: 6,
-    nombre: "Robot Quirúrgico da Vinci",
-    descripcion: "Precisión quirúrgica avanzada con control háptico y visión 3D inmersiva",
-    precio: "15,999.99",
-    imagen: "https://images.unsplash.com/photo-1530210124550-912dc1381cb8?w=600&h=450&fit=crop",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    imagenes: [
-      "https://images.unsplash.com/photo-1530210124550-912dc1381cb8?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=600&h=450&fit=crop",
-      "https://images.unsplash.com/photo-1582560469781-1965b9af903d?w=600&h=450&fit=crop"
-    ],
-    especificaciones: {
-      "Brazos": "4 brazos quirúrgicos",
-      "Visión": "3D HD 10x zoom",
-      "Precisión": "0.1mm",
-      "Instrumentos": "EndoWrist con 7 grados de libertad",
-      "Certificación": "FDA, CE Medical"
-    }
-  }
+  caracteristicas: [
+    "Diseño plegable en forma de barco para fácil transporte",
+    "Sistema de control remoto de largo alcance (1500m)",
+    "Doble sistema de posicionamiento GPS y Beidou",
+    "Grado de protección IP68 - completamente sumergible",
+    "Capacidad de carga de hasta 130kg",
+    "Batería de alta capacidad 40AH/12S",
+    "Fuerza de tracción de 400N para condiciones adversas",
+    "Marco de rescate de emergencia robusto",
+    "Operación eléctrica silenciosa",
+    "Construcción ligera de solo 28kg"
+  ],
+  aplicaciones: [
+    "Rescate acuático de emergencia",
+    "Operaciones de salvamento en ríos y lagos",
+    "Rescate en inundaciones",
+    "Evacuación médica en zonas acuáticas",
+    "Operaciones de guardacostas",
+    "Rescate en playas y costas",
+    "Misiones de búsqueda y rescate",
+    "Transporte de víctimas en superficie de agua"
+  ],
+  ventajas: [
+    "Mayor alcance de control remoto del mercado (1500m)",
+    "Sistema de navegación dual para precisión máxima",
+    "Diseño plegable para almacenamiento compacto",
+    "Certificación IP68 para máxima resistencia al agua",
+    "Relación peso-capacidad excepcional",
+    "Tiempo de respuesta rápido en emergencias",
+    "Fácil despliegue por un solo operador"
+  ]
+}
+  
 ];
