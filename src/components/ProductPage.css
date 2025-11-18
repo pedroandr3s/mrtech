@@ -5,69 +5,6 @@
   position: relative;
 }
 
-.product-page-header {
-  max-width: 1400px;
-  margin: 0 auto 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.back-btn {
-  background: rgba(255, 107, 53, 0.1);
-  border: 2px solid #ff6b35;
-  color: #ff6b35;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.back-btn:hover {
-  background: #ff6b35;
-  color: #fff;
-  transform: translateX(-5px);
-}
-
-.product-nav-tabs {
-  display: flex;
-  gap: 1rem;
-  background: #1a1a1a;
-  padding: 0.5rem;
-  border-radius: 12px;
-  border: 2px solid #3a3a3a;
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  color: #b0b0b0;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
-  color: #ff6b35;
-  background: rgba(255, 107, 53, 0.1);
-}
-
-.tab-btn.active {
-  background: #ff6b35;
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-}
-
 .product-page-content {
   max-width: 1400px;
   margin: 0 auto 4rem;
@@ -75,6 +12,30 @@
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.back-btn-corner {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 107, 53, 0.9);
+  border: 2px solid #ff6b35;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.back-btn-corner:hover {
+  background: #ff6b35;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
 }
 
 .product-page-error {
@@ -171,22 +132,14 @@
     padding: 1rem;
   }
 
-  .product-page-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .product-nav-tabs {
-    flex-direction: column;
-  }
-
-  .tab-btn {
-    width: 100%;
-    text-align: center;
-  }
-
   .product-page-content {
     padding: 1rem;
+    padding-top: 3.5rem;
+  }
+
+  .back-btn-corner {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 
   .related-products h2 {

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 import './PropuestaDetalle3.css';
 
 const PropuestaDetalle3 = ({ producto }) => {
   const [imagenActiva, setImagenActiva] = useState(0);
   const [cantidad, setCantidad] = useState(1);
+  const { addToCart, setIsCartOpen } = useCart();
 
   const nextImage = () => {
     setImagenActiva((prev) => (prev + 1) % producto.imagenes.length);
@@ -13,6 +15,24 @@ const PropuestaDetalle3 = ({ producto }) => {
     setImagenActiva((prev) => 
       prev === 0 ? producto.imagenes.length - 1 : prev - 1
     );
+  };
+
+  const handleAddToCart = () => {
+    addToCart(producto, cantidad);
+    // Mostrar mensaje de confirmación
+    const notification = document.createElement('div');
+    notification.className = 'add-to-cart-notification';
+    notification.textContent = `✓ ${cantidad} x ${producto.nombre} agregado al carrito`;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  };
+
+  const handleQuoteNow = () => {
+    addToCart(producto, cantidad);
+    setIsCartOpen(true);
   };
 
   return (
@@ -89,18 +109,18 @@ const PropuestaDetalle3 = ({ producto }) => {
               <button onClick={() => setCantidad(cantidad + 1)}>+</button>
             </div>
             
-            <button className="compact-btn-cart">
+            <button className="compact-btn-cart" onClick={handleAddToCart}>
               🛒 Agregar
             </button>
             
-            <button className="compact-btn-buy">
-              Comprar
+            <button className="compact-btn-buy" onClick={handleQuoteNow}>
+              Cotizar
             </button>
           </div>
 
           {/* Badges informativos */}
           <div className="compact-badges">
-            <span className="info-badge">🚚 Envío gratis</span>
+            <span className="info-badge">🚚 Envío a todo Chile</span>
             <span className="info-badge">↩️ 30 días devolución</span>
             <span className="info-badge">🛡️ Garantía oficial</span>
           </div>

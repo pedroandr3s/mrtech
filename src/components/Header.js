@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 import './Header.css';
 
 const Header = () => {
-  const [seccionActiva, setSeccionActiva] = useState('nosotros'); // 'nosotros' o 'contacto'
+  const [seccionActiva, setSeccionActiva] = useState('nosotros');
+  const { getTotalItems, setIsCartOpen } = useCart();
+  const totalItems = getTotalItems();
 
   const handleSeccionClick = (seccion) => {
     setSeccionActiva(seccion);
@@ -40,6 +43,22 @@ const Header = () => {
               Contáctame
             </button>
           </div>
+
+          <button 
+            className="cart-button"
+            onClick={() => setIsCartOpen(true)}
+          >
+            <svg className="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 2L7 6H21L19 2H9Z"/>
+              <path d="M7 6L5 20H19L17 6"/>
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="17" cy="21" r="1"/>
+            </svg>
+            <span>Cotizar</span>
+            {totalItems > 0 && (
+              <span className="cart-badge">{totalItems}</span>
+            )}
+          </button>
         </div>
       </div>
     </header>

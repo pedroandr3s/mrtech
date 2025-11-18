@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { productos } from '../data/productos';
-import PropuestaDetalle1 from './PropuestaDetalle1';
-import PropuestaDetalle2 from './PropuestaDetalle2';
 import PropuestaDetalle3 from './PropuestaDetalle3';
 import './ProductPage.css';
 
 const ProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [propuestaActiva, setPropuestaActiva] = useState(1);
   
   const producto = productos.find(p => p.id === parseInt(id));
 
@@ -24,39 +21,12 @@ const ProductPage = () => {
 
   return (
     <div className="product-page">
-      {/* Breadcrumb y navegación */}
-      <div className="product-page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>
-          ← Volver a productos
-        </button>
-
-        <div className="product-nav-tabs">
-          <button
-            className={`tab-btn ${propuestaActiva === 1 ? 'active' : ''}`}
-            onClick={() => setPropuestaActiva(1)}
-          >
-            Vista Clásica
-          </button>
-          <button
-            className={`tab-btn ${propuestaActiva === 2 ? 'active' : ''}`}
-            onClick={() => setPropuestaActiva(2)}
-          >
-            Vista Centrada
-          </button>
-          <button
-            className={`tab-btn ${propuestaActiva === 3 ? 'active' : ''}`}
-            onClick={() => setPropuestaActiva(3)}
-          >
-            Vista Compacta
-          </button>
-        </div>
-      </div>
-
-      {/* Contenido del producto */}
+      {/* Contenido del producto con botón volver integrado */}
       <div className="product-page-content">
-        {propuestaActiva === 1 && <PropuestaDetalle1 producto={producto} />}
-        {propuestaActiva === 2 && <PropuestaDetalle2 producto={producto} />}
-        {propuestaActiva === 3 && <PropuestaDetalle3 producto={producto} />}
+        <button className="back-btn-corner" onClick={() => navigate('/')}>
+          Volver
+        </button>
+        <PropuestaDetalle3 producto={producto} />
       </div>
 
       {/* Sección adicional: Productos relacionados */}
