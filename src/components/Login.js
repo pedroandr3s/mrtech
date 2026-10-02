@@ -20,8 +20,14 @@ const Login = () => {
     setSending(true);
     try {
       await signIn(email.trim(), password);
-    } catch {
-      setError('Correo o contraseña incorrectos');
+    } catch (err) {
+      if (err.message === 'Supabase no está configurado') {
+        setError('El sitio no está conectado a Supabase: faltan las variables de entorno en el despliegue.');
+      } else if (err.code === 'invalid_credentials' || err.status === 400) {
+        setError('Correo o contraseña incorrectos');
+      } else {
+        setError(`No se pudo iniciar sesión (${err.message}). Revisa tu conexión e inténtalo de nuevo.`);
+      }
     }
     setSending(false);
   };

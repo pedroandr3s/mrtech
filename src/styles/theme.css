@@ -276,13 +276,111 @@ main {
   place-items: center;
 }
 
-/* Catálogo */
-.cat-head {
-  padding-top: 54px;
-  padding-bottom: 34px;
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  padding-top: clamp(28px, 4vw, 56px);
+  padding-bottom: clamp(24px, 4vw, 48px);
+  overflow-x: clip;
 }
 
-.cat-head h1 {
+/* Texto y video comparten el mismo espacio: el texto queda como capa superior. */
+.hero-text {
+  grid-column: 1 / 9;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.6vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  background: var(--gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 22px rgba(19, 20, 43, 0.85));
+}
+
+.hero p {
+  margin-top: 20px;
+  color: #e6e7f5;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  max-width: 54ch;
+  text-shadow: 0 2px 16px rgba(19, 20, 43, 0.9);
+}
+
+.hero-tags {
+  list-style: none;
+  padding: 0;
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-tags li {
+  border: 1px solid var(--line);
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.hero-media {
+  grid-column: 5 / 13;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  /* el robot ocupa el centro del recuadro; el costado derecho está vacío */
+  transform: translateX(10%);
+  pointer-events: none;
+  aspect-ratio: 16 / 9;
+  /* resplandor suave para asentar el robot sobre el fondo */
+  background: radial-gradient(55% 55% at 50% 56%, rgba(255, 194, 14, 0.12) 0%, transparent 72%);
+}
+
+.hero-media canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* El video fuente se reproduce oculto; solo se ve el canvas recortado. */
+.tv-source {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Catálogo */
+.cat-head {
+  padding-top: clamp(36px, 5vw, 64px);
+  padding-bottom: 30px;
+}
+
+.cat-head h2 {
   font-family: var(--head);
   font-weight: 800;
   font-size: clamp(2.3rem, 5.5vw, 3.8rem);
@@ -1031,6 +1129,20 @@ form.f {
 }
 
 @media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text,
+  .hero-media {
+    grid-column: 1;
+  }
+
+  .hero-media {
+    grid-row: 2;
+    transform: none;
+  }
+
   .product {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1038,6 +1150,46 @@ form.f {
 
   .gallery {
     position: static;
+  }
+
+  /* En pantallas angostas los botones de compra van antes de las especificaciones. */
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info > * {
+    order: 10;
+  }
+
+  .info h1 {
+    order: 1;
+  }
+
+  .info .price {
+    order: 2;
+  }
+
+  .info .stock {
+    order: 3;
+  }
+
+  .info .desc {
+    order: 4;
+  }
+
+  .info .buy {
+    order: 5;
+    margin-top: 24px;
+  }
+
+  .info h2 {
+    order: 6;
+    margin-top: 34px;
+  }
+
+  .info .specs {
+    order: 7;
   }
 
   .details {
@@ -1083,6 +1235,59 @@ form.f {
 
   .cat-head {
     padding-top: 36px;
+    padding-bottom: 22px;
+  }
+
+  /* Catálogo en 2 columnas, con tarjetas compactas */
+  :root {
+    --cut: 11px;
+  }
+
+  .grid,
+  .related .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .grid {
+    padding-bottom: 72px;
+  }
+
+  .related {
+    margin-top: 56px;
+    padding-bottom: 72px;
+  }
+
+  .card-body {
+    padding: 12px 12px 14px;
+    gap: 6px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .card p {
+    font-size: 12.5px;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .card-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding-top: 6px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .stock {
+    font-size: 12px;
   }
 
   .gallery {
