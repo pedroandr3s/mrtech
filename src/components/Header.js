@@ -1,66 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import './Header.css';
+import { useAuth } from '../context/AuthContext';
+
+const WHATSAPP_URL = 'https://wa.me/56927294017';
 
 const Header = () => {
-  const [seccionActiva, setSeccionActiva] = useState('nosotros');
   const { getTotalItems, setIsCartOpen } = useCart();
+  const { isAdmin } = useAuth();
   const totalItems = getTotalItems();
 
-  const handleSeccionClick = (seccion) => {
-    setSeccionActiva(seccion);
-  };
-
   return (
-    <header className="header">
-      <div className="header-container">
-        <div className="logo">
-          <img 
-            src="https://via.placeholder.com/50/ffd700/000000?text=MR" 
-            alt="MrTech Logo" 
-          />
-          <div className="logo-text-container">
-            <span className="logo-text">MR Tech</span>
-            <span className="logo-subtitle">Machinery Robotic Technologies</span>
-          </div>
-        </div>
-
-        <div className="header-right">
-          <div className="switch-container">
-            <div 
-              className={`switch-slider ${seccionActiva === 'contacto' ? 'right' : 'left'}`}
-            ></div>
-            <button
-              className={`switch-btn ${seccionActiva === 'nosotros' ? 'active' : ''}`}
-              onClick={() => handleSeccionClick('nosotros')}
-            >
-              Nosotros
-            </button>
-            <button
-              className={`switch-btn ${seccionActiva === 'contacto' ? 'active' : ''}`}
-              onClick={() => handleSeccionClick('contacto')}
-            >
-              Contáctame
-            </button>
-          </div>
-
-          <button 
-            className="cart-button"
-            onClick={() => setIsCartOpen(true)}
-          >
-            <svg className="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 2L7 6H21L19 2H9Z"/>
-              <path d="M7 6L5 20H19L17 6"/>
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="17" cy="21" r="1"/>
-            </svg>
-            <span>Cotizar</span>
-            {totalItems > 0 && (
-              <span className="cart-badge">{totalItems}</span>
-            )}
+    <header className="site-header">
+      <div className="wrap header-in">
+        <Link className="brand" to="/" aria-label="MR TECH, ir al catálogo">
+          <img src="/mrtechLogo.png" alt="MR TECH - Machinery Robotic Technologies" />
+        </Link>
+        <nav className="nav" aria-label="Principal">
+          <NavLink className="navlink" to="/" end>
+            Catálogo
+          </NavLink>
+          {isAdmin && (
+            <NavLink className="navlink" to="/admin">
+              Administrar
+            </NavLink>
+          )}
+          <a className="navlink" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            Contáctame
+          </a>
+          <button className="btn btn-primary cut-s" type="button" onClick={() => setIsCartOpen(true)}>
+            Cotizar {totalItems > 0 && <span className="badge">{totalItems}</span>}
           </button>
-        </div>
+        </nav>
       </div>
+      <div className="header-line" aria-hidden="true" />
     </header>
   );
 };

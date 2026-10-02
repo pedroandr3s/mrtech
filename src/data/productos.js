@@ -1,4 +1,4 @@
-export const productos = [
+export const productosIniciales = [
   {
     id: 1,
     nombre: "Rueda de Manivela Eléctrica para Tanques",
@@ -136,8 +136,6 @@ export const productos = [
     imagenes: [
       "/mrproductos/perro1.jpg",
       "/mrproductos/perro2.jpg"
-    ],video: [
-      "/mrproductos/perro3.mp4",
     ],
     especificaciones: {
       "Tipo": "Cuadrúpedo biónico",

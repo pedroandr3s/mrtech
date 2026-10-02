@@ -1,93 +1,84 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useCart } from '../context/CartContext';
+import { formatPrecio, parsePrecio } from '../utils/format';
 import QuoteForm from './QuoteForm';
-import './CartModal.css';
 
 const CartModal = () => {
-  const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, clearCart } = useCart();
-  const [showForm, setShowForm] = useState(false);
+  const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity } = useCart();
+
+  useEffect(() => {
+    if (!isCartOpen) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setIsCartOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isCartOpen, setIsCartOpen]);
 
   if (!isCartOpen) return null;
 
-  const handleContinue = () => {
-    if (cartItems.length === 0) {
-      alert('Agrega productos al carrito para cotizar');
-      return;
-    }
-    setShowForm(true);
-  };
+  const close = () => setIsCartOpen(false);
+  const total = cartItems.reduce((sum, it) => sum + parsePrecio(it.precio) * it.cantidad, 0);
 
   return (
-    <div className="cart-modal-overlay" onClick={() => setIsCartOpen(false)}>
-      <div className="cart-modal-container" onClick={(e) => e.stopPropagation()}>
-        {!showForm ? (
-          <>
-            <div className="cart-header">
-              <h2>🛒 Carrito de Cotización</h2>
-              <button className="close-cart-btn" onClick={() => setIsCartOpen(false)}>✕</button>
-            </div>
+    <div className="overlay" onClick={close}>
+      <div
+        className="dialog cut"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dlg-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="dlg-in">
+          <div className="dlg-top">
+            <h2 id="dlg-title">Tu cotización</h2>
+            <button className="x" type="button" aria-label="Cerrar" onClick={close}>
+              ×
+            </button>
+          </div>
 
-            <div className="cart-content">
-              {cartItems.length === 0 ? (
-                <div className="empty-cart">
-                  <p>No hay productos en el carrito</p>
-                  <button onClick={() => setIsCartOpen(false)} className="continue-shopping">
-                    Continuar comprando
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="cart-items">
-                    {cartItems.map(item => (
-                      <div key={item.id} className="cart-item">
-                        <img src={item.imagen} alt={item.nombre} className="cart-item-image" />
-                        <div className="cart-item-info">
-                          <h3>{item.nombre}</h3>
-                          <p className="cart-item-price">${item.precio}</p>
-                        </div>
-                        <div className="cart-item-quantity">
-                          <button onClick={() => updateQuantity(item.id, item.cantidad - 1)}>−</button>
-                          <span>{item.cantidad}</span>
-                          <button onClick={() => updateQuantity(item.id, item.cantidad + 1)}>+</button>
-                        </div>
-                        <button 
-                          className="remove-item-btn"
-                          onClick={() => removeFromCart(item.id)}
-                          title="Eliminar producto"
-                        >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg>
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="cart-footer">
-                    <button className="clear-cart-btn" onClick={clearCart}>
-                      Limpiar Carrito
-                    </button>
-                    <button className="quote-btn" onClick={handleContinue}>
-                      Continuar con Cotización →
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
-          </>
-        ) : (
-          <QuoteForm 
-            cartItems={cartItems} 
-            onBack={() => setShowForm(false)}
-            onClose={() => {
-              setIsCartOpen(false);
-              setShowForm(false);
-            }}
-          />
-        )}
+          {cartItems.length === 0 ? (
+            <>
+              <p className="lead">
+                Todavía no agregaste productos. Elige uno en el catálogo y usa Agregar o Cotizar.
+              </p>
+              <div className="f">
+                <button className="btn btn-primary cut-s" type="button" onClick={close}>
+                  Ver catálogo
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="lead">Revisa los productos y déjanos tus datos para enviarte la cotización.</p>
+              <ul className="qitems">
+                {cartItems.map((it) => (
+                  <li key={it.id} className="qitem">
+                    <div>
+                      <b>{it.nombre}</b>
+                      <small>${formatPrecio(it.precio)} c/u</small>
+                    </div>
+                    <div className="qctl">
+                      <button type="button" aria-label="Quitar uno" onClick={() => updateQuantity(it.id, it.cantidad - 1)}>
+                        −
+                      </button>
+                      <span>{it.cantidad}</span>
+                      <button type="button" aria-label="Agregar uno" onClick={() => updateQuantity(it.id, it.cantidad + 1)}>
+                        +
+                      </button>
+                      <button className="rm" type="button" onClick={() => removeFromCart(it.id)}>
+                        Quitar
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="qtotal">
+                <span>Total referencial</span>
+                <span>${formatPrecio(total)}</span>
+              </div>
+              <QuoteForm cartItems={cartItems} total={total} onSent={close} />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

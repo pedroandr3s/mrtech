@@ -1,90 +1,88 @@
-import React, { useState, useRef } from 'react';
-import './ProductCard.css';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { formatPrecio } from '../utils/format';
 
-const ProductCard = ({ producto, theme = 'default', onClick }) => {
+export const StockLabel = ({ producto }) => {
+  const stock = producto.stock || 'En stock';
+  return <span className={`stock${stock === 'En stock' ? '' : ' low'}`}>{stock}</span>;
+};
+
+const ProductCard = ({ producto }) => {
   const [isHovering, setIsHovering] = useState(false);
   const videoRef = useRef(null);
-  const isMountedRef = useRef(true);
 
-  React.useEffect(() => {
-    isMountedRef.current = true;
-    
+  // Al desmontar, detiene el video (se copia el nodo para la limpieza).
+  useEffect(() => {
+    const video = videoRef.current;
     return () => {
-      isMountedRef.current = false;
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
+      if (video) video.pause();
     };
   }, []);
 
-  const handleMouseEnter = () => {
+  const handleEnter = () => {
     setIsHovering(true);
-    if (videoRef.current && isMountedRef.current) {
-      videoRef.current.currentTime = 0;
-      const playPromise = videoRef.current.play();
-      
+    const video = videoRef.current;
+    if (video) {
+      video.currentTime = 0;
+      const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          if (isMountedRef.current) {
-            console.log('Error al reproducir video:', error);
-          }
+        playPromise.catch(() => {
+          // La reproducción puede interrumpirse al salir el cursor; se ignora.
         });
       }
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleLeave = () => {
     setIsHovering(false);
-    if (videoRef.current && isMountedRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
-  const handleClick = () => {
-    if (onClick) {
-      onClick(producto);
+    const video = videoRef.current;
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
     }
   };
 
   return (
-    <div 
-      className={`product-card ${theme}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-      style={{ cursor: 'pointer' }}
+    <Link
+      className="card cut"
+      to={`/producto/${producto.id}`}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      onFocus={handleEnter}
+      onBlur={handleLeave}
     >
-      <div className="product-media">
-        <img 
-          src={producto.imagen} 
-          alt={producto.nombre}
-          className={`product-image ${isHovering ? 'hidden' : ''}`}
-        />
-        <video
-          ref={videoRef}
-          src={producto.video}
-          className={`product-video ${isHovering ? 'visible' : ''}`}
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
+      <div className="card-media">
+        {producto.imagen ? (
+          <img
+            src={producto.imagen}
+            alt={producto.nombre}
+            loading="lazy"
+            className={isHovering && producto.video ? 'hidden' : ''}
+          />
+        ) : (
+          <div className="no-image">Sin imagen</div>
+        )}
+        {producto.video && (
+          <video
+            ref={videoRef}
+            src={producto.video}
+            className={isHovering ? 'visible' : ''}
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+        )}
       </div>
-      
-      <div className="product-info">
-        <h3 className="product-name">{producto.nombre}</h3>
-        <p className="product-description">{producto.descripcion}</p>
-        <div className="product-footer">
-          <span className="product-price">${producto.precio}</span>
-          <button className="product-btn" onClick={(e) => {
-            e.stopPropagation();
-            handleClick();
-          }}>Ver más</button>
+      <div className="card-body">
+        <h3>{producto.nombre}</h3>
+        <p>{producto.descripcion}</p>
+        <div className="card-foot">
+          <span className="price">${formatPrecio(producto.precio)}</span>
+          <StockLabel producto={producto} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
