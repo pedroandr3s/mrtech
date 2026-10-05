@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext';
 import ProductCard from './ProductCard';
 import ProductDetail from './ProductDetail';
+import useSeo, { getSiteOrigin } from '../seo/Seo';
+import { normalizeForSeo, productGraph, productMeta } from '../seo/schema.mjs';
 
 const ProductPage = () => {
   const { id } = useParams();
   const { getById, publicados, loading } = useProducts();
 
   const producto = getById(id);
+
+  // Solo se indexan productos publicados; borradores y rutas inválidas llevan noindex.
+  const indexable = Boolean(producto && producto.publicado);
+  const seoProduct = useMemo(() => (producto ? normalizeForSeo(producto) : null), [producto]);
+  const seo = useMemo(
+    () =>
+      indexable
+        ? { ...productMeta(seoProduct), jsonLd: productGraph(getSiteOrigin(), seoProduct) }
+        : { noindex: true, title: producto ? `${producto.nombre} | MR TECH` : undefined },
+    [indexable, seoProduct, producto]
+  );
+  useSeo(loading ? { noindex: false, path: undefined } : seo);
 
   if (loading) {
     return <div className="page-status">Cargando…</div>;

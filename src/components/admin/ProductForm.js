@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useProducts } from '../../context/ProductsContext';
 import { useToast } from '../../context/ToastContext';
+import useSeo from '../../seo/Seo';
 import { uploadImage, uploadVideo } from '../../utils/media';
 import { formatPrecio, parsePrecio } from '../../utils/format';
 import { ListEditor, SpecsEditor } from './Editors';
@@ -300,6 +301,7 @@ const Formulario = ({ producto }) => {
 
 const ProductForm = () => {
   const { id } = useParams();
+  useSeo({ title: 'Publicación | MR TECH', noindex: true });
   const { getById, loading } = useProducts();
 
   if (id === undefined) return <Formulario />;

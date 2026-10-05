@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import useSeo from '../seo/Seo';
 import './admin/Admin.css';
 
 const Login = () => {
   const { isAdmin, authLoading, signIn } = useAuth();
   const location = useLocation();
+  useSeo({ title: 'Acceso administrador | MR TECH', noindex: true });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');

@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
+# Se permite el rastreo del sitio público. Las áreas privadas (administración)
+# no deben aparecer en buscadores. La línea "Sitemap" se agrega en el build,
+# cuando se conoce el dominio de producción (scripts/postbuild.mjs).
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin
+Disallow: /login

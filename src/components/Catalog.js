@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import TransparentVideo from './TransparentVideo';
 import { useProducts } from '../context/ProductsContext';
+import useSeo, { getSiteOrigin } from '../seo/Seo';
+import { homeGraph, homeMeta } from '../seo/schema.mjs';
+import {
+  CATALOG_TEXT,
+  CATALOG_TITLE,
+  HERO_EYEBROW,
+  HERO_TAGS,
+  HERO_TEXT,
+  HERO_TITLE,
+} from '../seo/content.mjs';
 
 const Hero = () => (
   <section className="wrap hero">
     <div className="hero-text">
-      <span className="hero-eyebrow">Machinery Robotic Technologies</span>
-      <h1>Robótica y maquinaria para operaciones exigentes</h1>
-      <p>
-        En MR TECH reunimos robots y equipos de última generación para logística, seguridad y rescate.
-        Soluciones pensadas para trabajar donde la precisión, la resistencia y la seguridad de las
-        personas marcan la diferencia.
-      </p>
+      <span className="hero-eyebrow">{HERO_EYEBROW}</span>
+      <h1>{HERO_TITLE}</h1>
+      <p>{HERO_TEXT}</p>
       <ul className="hero-tags">
-        <li>Logística industrial</li>
-        <li>Seguridad y emergencias</li>
-        <li>Rescate acuático</li>
+        {HERO_TAGS.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
       </ul>
     </div>
     <TransparentVideo
@@ -31,12 +37,18 @@ const Hero = () => (
 const Catalog = () => {
   const { publicados: productos, loading, storageError } = useProducts();
 
+  const jsonLd = useMemo(
+    () => homeGraph(getSiteOrigin(), productos),
+    [productos]
+  );
+  useSeo({ ...homeMeta(), jsonLd });
+
   return (
     <>
       <Hero />
       <section className="wrap cat-head" id="catalogo">
-        <h2>Catálogo</h2>
-        <p>Maquinaria y robótica para logística, seguridad y rescate.</p>
+        <h2>{CATALOG_TITLE}</h2>
+        <p>{CATALOG_TEXT}</p>
       </section>
       <section className="wrap grid">
         {!loading && productos.length === 0 ? (
@@ -45,7 +57,9 @@ const Catalog = () => {
             {!storageError && <Link className="link-btn" to="/admin/nuevo">Crear la primera publicación</Link>}
           </div>
         ) : (
-          productos.map((producto) => <ProductCard key={producto.id} producto={producto} />)
+          productos.map((producto, i) => (
+            <ProductCard key={producto.id} producto={producto} priority={i < 4} />
+          ))
         )}
       </section>
     </>

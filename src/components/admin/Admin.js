@@ -2,11 +2,13 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useProducts } from '../../context/ProductsContext';
 import { useAuth } from '../../context/AuthContext';
+import useSeo from '../../seo/Seo';
 import { useToast } from '../../context/ToastContext';
 import { formatPrecio } from '../../utils/format';
 import './Admin.css';
 
 const Admin = () => {
+  useSeo({ title: 'Administración | MR TECH', noindex: true });
   const navigate = useNavigate();
   const showToast = useToast();
   const {

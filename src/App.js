@@ -13,13 +13,17 @@ import ProductForm from './components/admin/ProductForm';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
+import useSeo from './seo/Seo';
 
-const NotFound = () => (
-  <div className="page-status">
-    <h1>Página no encontrada</h1>
-    <Link to="/">Volver al inicio</Link>
-  </div>
-);
+const NotFound = () => {
+  useSeo({ title: 'Página no encontrada | MR TECH', noindex: true });
+  return (
+    <div className="page-status">
+      <h1>Página no encontrada</h1>
+      <Link to="/">Volver al inicio</Link>
+    </div>
+  );
+};
 
 function App() {
   return (

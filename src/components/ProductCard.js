@@ -7,7 +7,7 @@ export const StockLabel = ({ producto }) => {
   return <span className={`stock${stock === 'En stock' ? '' : ' low'}`}>{stock}</span>;
 };
 
-const ProductCard = ({ producto }) => {
+const ProductCard = ({ producto, priority = false }) => {
   const [isHovering, setIsHovering] = useState(false);
   const videoRef = useRef(null);
 
@@ -56,7 +56,8 @@ const ProductCard = ({ producto }) => {
           <img
             src={producto.imagen}
             alt={producto.nombre}
-            loading="lazy"
+            loading={priority ? undefined : 'lazy'}
+            decoding="async"
             className={isHovering && producto.video ? 'hidden' : ''}
           />
         ) : (
